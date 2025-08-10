@@ -78,7 +78,8 @@
       e.preventDefault();
       const empNumber = document.getElementById("empNumber").value;
       const empName = document.getElementById("empName").value;
-      const response = await fetch("https://resign-service.onrender.com", {
+      // const response = await fetch("http://localhost:5003/resignation", {
+      const response = await fetch("https://resign-service.onrender.com/resignation", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ empNumber, empName })
