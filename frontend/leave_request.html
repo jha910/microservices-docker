@@ -83,7 +83,7 @@
       const empNumber = document.getElementById("empNumber").value;
       const empName = document.getElementById("empName").value;
       const leaveDays = document.getElementById("leaveDays").value;
-      const response = await fetch("http://localhost:5001/leave", {
+      const response = await fetch("https://leave-service.onrender.com", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ empNumber, empName, leaveDays })

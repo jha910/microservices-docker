@@ -83,7 +83,7 @@
       const empNumber = document.getElementById("empNumber").value;
       const empName = document.getElementById("empName").value;
       const noOfDays = document.getElementById("noOfDays").value;
-      const response = await fetch("http://localhost:5002/wfh", {
+      const response = await fetch("https://wfh-service.onrender.com", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ empNumber, empName, noOfDays })
