@@ -19,8 +19,10 @@ def init_db():
 
 init_db()
 
-@app.route('/leave', methods=['POST'])
+@app.route('/leave', methods=['OPTIONS', 'POST'])
 def leave_request():
+    if request.method == 'OPTIONS':
+        return '', 200  # Preflight response
     data = request.get_json()
     empNumber = data.get('empNumber')
     empName = data.get('empName')
@@ -32,6 +34,7 @@ def leave_request():
     conn.commit()
     conn.close()
     return jsonify(status="success", message="Leave requested successfully")
+
 
 if __name__ == '__main__':
     app.run(port=5001)

@@ -18,8 +18,10 @@ def init_db():
 
 init_db()
 
-@app.route('/resignation', methods=['POST'])
+@app.route('/resignation', methods=['OPTIONS', 'POST'])
 def resignation_request():
+    if request.method == 'OPTIONS':
+        return '', 200  # Preflight response
     data = request.get_json()
     empNumber = data.get('empNumber')
     empName = data.get('empName')
@@ -30,6 +32,7 @@ def resignation_request():
     conn.commit()
     conn.close()
     return jsonify(status="success", message="Resignation submitted")
+
 
 if __name__ == '__main__':
     app.run(port=5003)

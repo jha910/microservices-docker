@@ -19,8 +19,10 @@ def init_db():
 
 init_db()
 
-@app.route('/wfh', methods=['POST'])
+@app.route('/wfh', methods=['OPTIONS', 'POST'])
 def wfh_request():
+    if request.method == 'OPTIONS':
+        return '', 200  # Preflight response
     data = request.get_json()
     empNumber = data.get('empNumber')
     empName = data.get('empName')
@@ -32,6 +34,7 @@ def wfh_request():
     conn.commit()
     conn.close()
     return jsonify(status="success", message="WFH requested successfully")
+
 
 if __name__ == '__main__':
     app.run(port=5002)
