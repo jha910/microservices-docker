@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resignation Request</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Resignation Request</h2>
+    <form id="resignationForm">
+      <div class="form-group">
+        <label for="empNumber">Employee Number</label>
+        <input type="text" id="empNumber" name="empNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="empName">Employee Name</label>
+        <input type="text" id="empName" name="empName" required>
+      </div>
+      <button type="submit">Resign</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+  <script>
+    document.getElementById('resignationForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const empNumber = document.getElementById("empNumber").value;
+      const empName = document.getElementById("empName").value;
+      const response = await fetch("http://localhost:5003/resignation", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ empNumber, empName })
+      });
+      const data = await response.json();
+      document.getElementById('msg').textContent = data.status === 'success' ? 'Resignation submitted!' : 'Error';
+    });
+  </script>
+</body>
+</html>

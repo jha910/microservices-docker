@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      color: #333;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .card-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .card-description {
+      font-size: 0.95em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>Employee Management System</h1>
+  <div class="dashboard">
+    <a href="leave_request.html" class="card">
+      <div class="card-title">Leave Request</div>
+      <div class="card-description">Employee leave request page</div>
+    </a>
+    <a href="wfh_request.html" class="card">
+      <div class="card-title">WFH Request</div>
+      <div class="card-description">Work from home request</div>
+    </a>
+    <a href="resign_request.html" class="card">
+      <div class="card-title">Resign</div>
+      <div class="card-description">Quit</div>
+    </a>
+  </div>
+</body>
+</html>
